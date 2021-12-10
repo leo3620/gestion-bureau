@@ -1,0 +1,34 @@
+.bloc1{
+  height: 60px;
+  width: 60px;
+  background: red;
+  margin: 5px;
+  display: inline-block;
+
+  &:hover{
+    cursor: pointer;
+    background: blue;
+  }
+}
+
+.blocEmpty{
+  height: 60px;
+  width: 60px;
+  margin: 5px;
+  display: inline-block;
+}
+
+.building{
+  position: absolute;
+  top:130px;
+  left: 80px;
+  background: yellow;
+}
+
+.mainCouloir1{
+  min-width: 1120px;
+}
+
+.blockClicked{
+  background-color: black;
+}

@@ -1,0 +1,12 @@
+.left{
+  background-color: green;
+  overflow-x: scroll;
+}
+
+.right{
+  background-color: blue;
+}
+
+.left, .right{
+  height: calc(100vh - 64px);
+}
