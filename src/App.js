@@ -38,7 +38,7 @@ function App() {
                         <Header className="site-layout-background" style={{ padding: 0 }}>
                            Gestion des bureaux de POUDLARD
                         </Header>
-                        <Content style={{ margin: '0 16px' }} className={"content"}>
+                        <Content className={"content"}>
                             <Routes>
                                 <Route path="/bureau" element={<Main/>}/>
                                 <Route path="/" element={<Main/>}/>

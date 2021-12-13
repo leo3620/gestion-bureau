@@ -1,6 +1,21 @@
 .bloc1{
-  height: 60px;
   width: 60px;
+}
+
+.bloc2{
+  width: 130px;
+}
+
+.bloc3{
+  width: 200px;
+}
+
+.bloc4{
+  width: 270px;
+}
+
+.desktop{
+  height: 60px;
   background: red;
   margin: 5px;
   display: inline-block;
@@ -22,7 +37,6 @@
   position: absolute;
   top:130px;
   left: 80px;
-  background: yellow;
 }
 
 .mainCouloir1{
@@ -31,4 +45,11 @@
 
 .blockClicked{
   background-color: black;
+}
+.warning-building{
+  font-size: 3rem;
+  margin: 120px 300px;
+  .anticon{
+    color: red;
+  }
 }

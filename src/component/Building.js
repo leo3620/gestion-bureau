@@ -1,5 +1,5 @@
 import '../css/building.scss';
-import Icon, {DesktopOutlined, WarningOutlined} from "@ant-design/icons";
+import {WarningOutlined} from "@ant-design/icons";
 
 function Building(props) {
 
@@ -19,7 +19,7 @@ function Building(props) {
                         />
                     } else {
                         const isClicked = props.room.id === room.id ? 'blockClicked' : '';
-                        return <div className={`bloc1 ${isClicked}`} key={room.id} onClick={() => displayRoomInfo(room.id)}/>
+                        return <div className={`${room.blocType} ${isClicked} desktop`} key={room.id} onClick={() => displayRoomInfo(room.id)}/>
                     }
                 })}
             </div>)
@@ -29,7 +29,7 @@ function Building(props) {
         <div className="building">
             {props.floor === 0 && draw(0)}
             {props.floor === 1 && draw(1)}
-            {props.floor === 2 && <div><WarningOutlined/>&nbsp;ETAGE EN TRAVAUX</div>}
+            {props.floor === 2 && <div className='warning-building'><WarningOutlined/>&nbsp;ETAGE EN TRAVAUX</div>}
         </div>
     );
 }
