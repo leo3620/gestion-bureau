@@ -1,5 +1,7 @@
 import '../css/building.scss';
-import {WarningOutlined} from "@ant-design/icons";
+import { WarningOutlined} from "@ant-design/icons";
+import Desk from "./Desk";
+
 
 function Building(props) {
 
@@ -10,16 +12,26 @@ function Building(props) {
         props.setRoom(getRoom(roomID));
     }
 
+
     function draw(floor){
        return  props.building[floor].corridor.map((corridor) => {
             return ( <div className='mainCouloir1' key={corridor.id}>
                 {corridor.rooms.map((room) => {
                     if (room.isEmpty) {
-                        return <div className="blocEmpty" key={room.id}
+                        return <div className="blocEmpty bloc1" key={room.id}
                         />
                     } else {
                         const isClicked = props.room.id === room.id ? 'blockClicked' : '';
-                        return <div className={`${room.blocType} ${isClicked} desktop`} key={room.id} onClick={() => displayRoomInfo(room.id)}/>
+                        const roomSelected = props.rooms.find(r => r.id === room.id);
+                        const users = roomSelected.users.length > 0 ?
+                         roomSelected.users.map(user => {
+                            return <div key={user.value}>
+                                {user.value}
+                            </div>
+                        }) :
+                        'Aucun occupant'
+                        return <Desk key={room.id} title={users} room={room} clicked={isClicked}
+                                        onClick={() => displayRoomInfo(room.id)} roomSelected={roomSelected}/>
                     }
                 })}
             </div>)

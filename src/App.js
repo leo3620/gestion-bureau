@@ -12,7 +12,7 @@ import Main from "./component/Main";
 const { Header, Content, Footer, Sider } = Layout;
 function App() {
 
-    const [collapsed, setCollapsed] = useState(false);
+    const [collapsed, setCollapsed] = useState(true);
 
 
     let onCollapse = collapsed => {
@@ -27,16 +27,16 @@ function App() {
                         <div className="logo" />
                         <Menu theme="dark" defaultSelectedKeys={['1']} mode="inline">
                             <Menu.Item key="1" icon={<UserOutlined />}>
-                                <Link to="/bureau">My Profile</Link>
+                                <Link to="/bureau">Bureaux</Link>
                             </Menu.Item>
                             <Menu.Item key="2" icon={<DesktopOutlined />}>
-                                <Link to="/floor">My Profile</Link>
+                                <Link to="/floor">Un menu</Link>
                             </Menu.Item>
                         </Menu>
                     </Sider>
                     <Layout className="site-layout">
-                        <Header className="site-layout-background" style={{ padding: 0 }}>
-                           Gestion des bureaux de POUDLARD
+                        <Header className="site-layout-background" style={{ padding: 0, textAlign: 'center', fontSize: '1.5rem' }}>
+                           Gestion des bureaux d'une école inconnue
                         </Header>
                         <Content className={"content"}>
                             <Routes>

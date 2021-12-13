@@ -1,7 +1,6 @@
 .left{
   overflow-x: scroll;
   box-shadow: 0 0 11px rgba(33, 33, 33, .2);
-
 }
 
 .right{
@@ -9,5 +8,5 @@
 }
 
 .left, .right{
-  height: calc(100vh - 64px);
+  height: calc(100vh - 64px - 70px);
 }
