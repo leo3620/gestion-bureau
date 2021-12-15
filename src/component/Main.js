@@ -8,7 +8,7 @@ import User from "./User";
 
 import React, {useContext} from "react";
 import {RoomsContext} from "../RoomsContext";
-import {InfoCircleFilled, ItalicOutlined} from "@ant-design/icons";
+import {InfoCircleFilled} from "@ant-design/icons";
 
 const { TabPane } = Tabs;
 

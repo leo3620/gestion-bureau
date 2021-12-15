@@ -1,7 +1,7 @@
 import '../css/building.scss';
 import { WarningOutlined} from "@ant-design/icons";
 import Desk from "./Desk";
-import {useContext, useEffect} from "react";
+import {useContext} from "react";
 import {RoomsContext} from "../RoomsContext";
 
 
@@ -15,8 +15,6 @@ function Building(props) {
     }
 
     const rooms = useContext(RoomsContext);
-
-
 
     function draw(floor){
        return  props.building[floor].corridor.map((corridor) => {
