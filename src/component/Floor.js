@@ -17,13 +17,23 @@ function Floor(props) {
         <div className="floor">
             <div className="floor-button">
                 <Tooltip title="Etage supérieur">
-                    <Button type="primary" shape="circle" icon={<UpCircleOutlined />} onClick={() => changeFloorEvent('up')} />
+                    <Button type="primary" shape="circle" icon={<UpCircleOutlined />} onClick={() => changeFloorEvent('up')} disabled={props.floor > 1}/>
                 </Tooltip>
                 <Tooltip title="Etage inférieur" placement='bottom'>
-                    <Button type="primary" shape="circle" icon={<DownCircleOutlined />} onClick={() => changeFloorEvent('down')}/>
+                    <Button type="primary" shape="circle" icon={<DownCircleOutlined />} onClick={() => changeFloorEvent('down')} disabled={props.floor === 0}/>
                 </Tooltip>
             </div>
             ÉTAGE {props.floor}
+            <div className="legend">
+                <div>
+                    <div className='legendType standard'/>
+                    Type standard
+                </div>
+                <div>
+                    <div className='legendType labo'/>
+                    Type Laboratoire
+                </div>
+            </div>
         </div>
     );
 }

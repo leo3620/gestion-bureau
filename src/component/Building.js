@@ -1,16 +1,21 @@
 import '../css/building.scss';
 import { WarningOutlined} from "@ant-design/icons";
 import Desk from "./Desk";
+import {useContext, useEffect} from "react";
+import {RoomsContext} from "../RoomsContext";
 
 
 function Building(props) {
 
     function getRoom(roomId) {
-        return props.rooms.find(room => room.id === roomId);
+        return rooms.find(room => room.id === roomId);
     }
     function displayRoomInfo(roomID) {
         props.setRoom(getRoom(roomID));
     }
+
+    const rooms = useContext(RoomsContext);
+
 
 
     function draw(floor){
@@ -22,16 +27,16 @@ function Building(props) {
                         />
                     } else {
                         const isClicked = props.room.id === room.id ? 'blockClicked' : '';
-                        const roomSelected = props.rooms.find(r => r.id === room.id);
+                        const roomSelected = rooms.find(r => r.id === room.id);
                         const users = roomSelected.users.length > 0 ?
                          roomSelected.users.map(user => {
-                            return <div key={user.value}>
+                            return <div key={'USER-ROOM-SELECTED' + user.value}>
                                 {user.value}
                             </div>
                         }) :
                         'Aucun occupant'
                         return <Desk key={room.id} title={users} room={room} clicked={isClicked}
-                                        onClick={() => displayRoomInfo(room.id)} roomSelected={roomSelected}/>
+                                        onClick={() => displayRoomInfo(room.id)} roomSelected={roomSelected} setRooms={props.setRooms}/>
                     }
                 })}
             </div>)

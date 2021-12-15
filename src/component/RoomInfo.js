@@ -1,13 +1,15 @@
 import '../css/roomInfo.scss';
 import {AutoComplete, Button, Input, Tooltip} from "antd";
-import {useEffect, useState} from "react";
+import {useContext, useEffect, useState} from "react";
 import {DeleteOutlined} from "@ant-design/icons";
+import {RoomsContext} from "../RoomsContext";
 
 function RoomInfo(props) {
 
 
     const [options, setOptions] = useState([]);
     const [value, setValue] = useState('');
+    const rooms = useContext(RoomsContext);
 
     const onChange = (data) => {
         setValue(data)
@@ -19,20 +21,25 @@ function RoomInfo(props) {
     };
 
     const isAvailable = (user) => {
-         return !props.rooms.filter(r => r.users.filter (u => u.value === user ).length > 0).length > 0;
+         return !rooms.filter(r => r.users.filter (u => u.value === user ).length > 0).length > 0;
     }
 
     const onSearch = (searchText) => {
-        let filtered = props.users.filter(name => name.value.toLowerCase().startsWith(searchText.toLowerCase()) && isAvailable(name.value));
+        let filtered = props.users.filter(name => (name.value.toLowerCase().startsWith(searchText.toLowerCase()) || name.value.split(' ')[1].toLowerCase().startsWith(searchText.toLowerCase()))  && isAvailable(name.value));
         setOptions(filtered)
     };
+
+    const onFocus = () => {
+        setOptions([])
+    };
+
 
     const deleteUser = (user) => {
       props.removeUser(user);
     };
 
 
-    useEffect(()=> {setValue('')}, [props.room])
+    useEffect(()=> {setValue('')}, [props.room, rooms])
 
     return (
        <div className="roomInfo">
@@ -43,21 +50,21 @@ function RoomInfo(props) {
                    <div className='centered'>
                        <span>{
                            props.room.capacity - props.room.users.length
-                       } Places disponible{props.room.capacity - props.room.users.length > 1 ? 's' :''}</span>
+                       } places disponible{props.room.capacity - props.room.users.length > 1 ? 's' :''}</span>
                    </div>
                    <div className='fields'>
-                       <span>Type:</span>
+                       <span className='field-legend'>Type:</span>
                        <span>{props.room.type}</span>
                    </div>
                    <div className='fields'>
-                       <span>Capacité:</span>
+                       <span className='field-legend'>Capacité:</span>
                        <span>{props.room.capacity}</span>
                    </div>
                    <div className='fields'>
-                       <span>Occupants:</span>
+                       <span className='field-legend'>Occupants:</span>
                        {
                           props.room.users.map(user => {
-                              return <div className='user-array' key={user.value}>
+                              return <div className='user-array' key={'USER-ARRAY' + user.value}>
                                   <Tooltip title="Supprimer">
                                       <Button danger shape="circle" icon={<DeleteOutlined />} size='small' onClick={() => deleteUser(user)} />
                                   </Tooltip>
@@ -76,6 +83,7 @@ function RoomInfo(props) {
                                onChange={onChange}
                                onSearch={onSearch}
                                onSelect={onSelect}
+                               onFocus={onFocus}
                            >
                                <Input.Search size="medium" placeholder="Ajouter un occupant"/>
                            </AutoComplete>
@@ -85,7 +93,7 @@ function RoomInfo(props) {
 
                    </div>
                    <div className='fields'>
-                       <span>Autres informations:</span>
+                       <span className='field-legend'>Autres informations:</span><br/>
                        <span>{props.room.infos}</span>
                    </div>
                </div> :

@@ -2,7 +2,7 @@
 function People() {
     return (
        <div className="people">
-           PEOPLE
+           - Page en construction -
        </div>
     );
 }

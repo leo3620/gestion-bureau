@@ -10,3 +10,16 @@
 .left, .right{
   height: calc(100vh - 64px - 70px);
 }
+
+.user-pan{
+  max-height: calc(100vh - 64px - 70px - 100px);
+  overflow: scroll;
+  padding: 0px 25px 10px 10px;
+
+  .user-legend{
+    margin-bottom: 10px;
+    font-style: italic;
+    color: gray;
+  }
+}
+

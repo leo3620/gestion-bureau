@@ -1,5 +1,7 @@
 import React from 'react'
 import { useDrag } from 'react-dnd'
+import '../css/user.scss';
+import {DragOutlined} from "@ant-design/icons";
 
 function User({user}) {
     const [{isDragging}, drag] = useDrag(() => ({
@@ -12,14 +14,15 @@ function User({user}) {
 
     return (
         <div
+            className="user-draggable"
             ref={drag}
             style={{
                 opacity: isDragging ? 0.5 : 1,
-                fontSize: 25,
-                fontWeight: 'bold',
+                fontSize: 15,
                 cursor: 'move',
             }}
         >
+            <DragOutlined className="iconDrag"/>
             {user.value}
         </div>
     )

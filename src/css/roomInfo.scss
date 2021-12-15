@@ -14,8 +14,9 @@
 
   .fields{
     margin-bottom: 10px;
-    span:first-of-type{
+    .field-legend{
       font-weight: bold;
+      margin-right: 3px;
     }
   }
 }
