@@ -7,6 +7,8 @@ Pour installer le projet :
 Pour lancer le projet:  
 `yarn start`
 
+Le projet est ensuite consultable via l'url :  http://localhost:3000/
+
 Ce projet comporte une section principale avec deux étages réalisés. 
 Il y a deux façons de gerer l'attribution 
 
